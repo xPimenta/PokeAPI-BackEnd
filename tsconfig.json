@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "ES2017" ,
+    "lib": [
+      "ES6"
+    ] ,
+
+
+    "module": "commonjs" ,
+    "rootDir": "./" ,
+    "moduleResolution": "node" ,
+    "baseUrl": "./" ,
+    "paths": {
+      "@config/*": ["./src/config/*"],
+      "@controllers/*": ["./src/controllers/*"],
+      "@factories/*": ["./src/factories/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@repositories/*": ["./src/repositories/*"],
+      "@routers/*": ["./src/routers/*"],
+      "@schemas/*": ["./src/schemas/*"],
+      "@services/*": ["./src/services/*"],
+      "@utils/*": ["./src/utils/*"]
+    } ,
+    "resolveJsonModule": true ,
+
+
+    "allowJs": true ,
+
+  
+    "outDir": "./dist",
+    "removeComments": true ,
+
+ 
+    "esModuleInterop": true ,
+    "forceConsistentCasingInFileNames": true 
+  }
+}
