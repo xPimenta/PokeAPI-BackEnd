@@ -12,8 +12,8 @@ datasource db {
 
 model comments {
   id         	Int    @id @default(autoincrement())
-  name       	String @unique
-  email      	String @unique
+  name       	String 
+  email      	String 
   comment    	String
   pokemon   	String
   pokeImageUrl 	String  @default("")

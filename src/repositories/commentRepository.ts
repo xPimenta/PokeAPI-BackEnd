@@ -13,14 +13,14 @@ export const commentRepository = {
 	},
 
 	async postComment(uploadInfo: CommentTemplate) {
-		const { name, email, comment, pokemon } = uploadInfo
+		const { name, email, comment, pokemon, pokeImageUrl } = uploadInfo
 		const newComment = await prisma.comments.create({
 			data: {
 				name,
 				email,
 				comment,
 				pokemon,
-				
+				pokeImageUrl
 			}
 		})
 		return newComment
