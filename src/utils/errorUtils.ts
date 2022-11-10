@@ -14,7 +14,6 @@ export function errorTypeToStatusCode(errorType: string) {
     conflict: 409,
     wrongSchema: 422,
   }
-
   return types[errorType] || 400
 }
 
