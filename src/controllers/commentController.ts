@@ -14,13 +14,11 @@ export async function postComment(req: Request, res: Response) {
 	  };
 	  
 	  const newComment = await commentService.postComment(uploadInfo);
-	  res.status(200).json(newComment);
+
+	  res.status(201).send(newComment);
 }
 
 export async function getComments(req: Request, res: Response) {
 	const comments = await commentService.getComments(req.params.pokemon);
-
-	//res.status(200).json(comments);
-	console.log(req.params.pokemon)
-	//res.status(200).send(req.params.pokemon);
+	res.status(200).send(comments);
 }
