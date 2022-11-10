@@ -14,7 +14,6 @@ export async function postComment(req: Request, res: Response) {
 	  };
 	  
 	  const newComment = await commentService.postComment(uploadInfo);
-
 	  res.status(201).send(newComment);
 }
 

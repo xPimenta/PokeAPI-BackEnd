@@ -1,5 +1,6 @@
 import { prisma } from "../config/database"
 import { CommentTemplate } from "@services/commentService"
+import { conflictError } from "@utils/errorUtils"
 
 export const commentRepository = {
 	  async getComments(searchData: string) {
@@ -7,7 +8,9 @@ export const commentRepository = {
 		const comments = await prisma.comments.findMany({
 			where: {
 				pokemon: searchData
-			}
+			},
+			//take: limit,
+			//skip: pageOffset
 		})
 		return comments
 	},
@@ -21,8 +24,9 @@ export const commentRepository = {
 				comment,
 				pokemon,
 				pokeImageUrl
-			}
+			},
 		})
+		
 		return newComment
 	}
 }

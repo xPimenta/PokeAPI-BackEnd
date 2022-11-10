@@ -4,6 +4,7 @@ import express, { Request, Response } from "express"
 import "express-async-errors"
 
 import commentRouter from "./routers/commentRouter"
+import { errorHandler } from "./middlewares/errorHandler"
 
 dotenv.config()
 const app = express()
@@ -15,6 +16,6 @@ app.use(cors())
 app.get("/", (req: Request, res: Response) => res.send("Online"))
 app.use(commentRouter)
 
-// app.use(handleError)
+app.use(errorHandler)
 
 export default app
