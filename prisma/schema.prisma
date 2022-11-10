@@ -15,6 +15,7 @@ model comments {
   name       	String @unique
   email      	String @unique
   comment    	String
+  pokemon   	String
   pokeImageUrl 	String  @default("")
   createdAt 	DateTime @default(now())
 }

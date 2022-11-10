@@ -4,4 +4,5 @@ export const postCommentSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().email().required(),
   comment: Joi.string().required(),
+  pokemon: Joi.string().required(),
 });
