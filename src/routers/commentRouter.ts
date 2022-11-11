@@ -12,7 +12,7 @@ commentRouter.post(
 );
 
 commentRouter.get(
-  "/comments/:pokemon",
+  "/comments",
   controller.getComments
 );
 

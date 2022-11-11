@@ -18,6 +18,9 @@ export async function postComment(req: Request, res: Response) {
 }
 
 export async function getComments(req: Request, res: Response) {
-	const comments = await commentService.getComments(req.params.pokemon);
+	  const { pokemon , limit, page } = req.query;
+
+	  const comments = await commentService.getComments(pokemon as string, limit as string, page as string);
+	  
 	res.status(200).send(comments);
 }

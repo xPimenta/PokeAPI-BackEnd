@@ -33,8 +33,16 @@ export const commentService = {
 	return newComment
   },
   
-  async getComments(searchData: string) {
-    const comments = await commentRepository.getComments(searchData)
+  async getComments(pokemon: string, limit: string, pageOffset: string) {
+
+	if(parseInt(limit) == NaN || parseInt(pageOffset) == NaN) {
+		throw notFoundError("Invalid limit or pageOffset")
+	}
+
+	if(limit == "") { limit = "10"}
+	if(pageOffset == "") { pageOffset = "1"}
+
+	const comments = await commentRepository.getComments(pokemon, (parseInt(limit)), parseInt(pageOffset))
 
 	if(!comments) {
 		throw notFoundError("No comments found")

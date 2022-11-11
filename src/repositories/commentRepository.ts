@@ -3,14 +3,16 @@ import { CommentTemplate } from "@services/commentService"
 import { conflictError } from "@utils/errorUtils"
 
 export const commentRepository = {
-	  async getComments(searchData: string) {
+	  async getComments(pokemon: string, limit: number, pageOffset: number) {
 
 		const comments = await prisma.comments.findMany({
 			where: {
-				pokemon: searchData
+				pokemon: {
+					contains: pokemon
+				}
 			},
-			//take: limit,
-			//skip: pageOffset
+			take: limit,
+			skip: (pageOffset -1) * limit
 		})
 		return comments
 	},
