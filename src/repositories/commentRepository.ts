@@ -3,8 +3,18 @@ import { CommentTemplate } from "@services/commentService"
 import { conflictError } from "@utils/errorUtils"
 
 export const commentRepository = {
-	  async getComments(pokemon: string, limit: number, pageOffset: number) {
+	  async getAllComments(limit: number, page: number) {
+		const comments = await prisma.comments.findMany({
+			take: limit,
+			skip: (page - 1) * limit,
+			orderBy: {
+				createdAt: "desc"
+			}
+		})
+		return comments
+	},
 
+	  async getComments(pokemon: string, limit: number, pageOffset: number) {
 		const comments = await prisma.comments.findMany({
 			where: {
 				pokemon: {
@@ -12,7 +22,10 @@ export const commentRepository = {
 				}
 			},
 			take: limit,
-			skip: (pageOffset -1) * limit
+			skip: (pageOffset -1) * limit,
+			orderBy: {
+				createdAt: "desc"
+			}
 		})
 		return comments
 	},
@@ -28,7 +41,6 @@ export const commentRepository = {
 				pokeImageUrl
 			},
 		})
-		
 		return newComment
 	}
 }

@@ -1,8 +1,8 @@
 import Joi from "joi";
 
-export const postCommentSchema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().email().required(),
-  comment: Joi.string().required(),
-  pokemon: Joi.string().required(),
-});
+export const commentSchema = Joi.object({
+	  comment: Joi.string().required(),
+	  name: Joi.string().required(),
+	  email: Joi.string().email().required(),
+	  pokemon: Joi.string().required()
+	});

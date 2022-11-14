@@ -7,7 +7,7 @@ const commentRouter = Router();
 
 commentRouter.post(
   "/postComment",
-  validateSchema(schema.postCommentSchema),
+  validateSchema(schema.commentSchema),
   controller.postComment
 );
 

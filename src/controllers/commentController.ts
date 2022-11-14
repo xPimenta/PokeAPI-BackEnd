@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { commentService } from "../services/commentService";
-
-import { CommentTemplate } from "../services/commentService";
+import { commentService, CommentTemplate, SearchTemplate } from "../services/commentService";
+import { validateQueryStr } from "@utils/validateQueryStr";
 
 export async function postComment(req: Request, res: Response) {
 	  const { name, email, comment, pokemon } = req.body;
+
 	  const uploadInfo: CommentTemplate = {
 		name,
 		email,
@@ -18,9 +18,18 @@ export async function postComment(req: Request, res: Response) {
 }
 
 export async function getComments(req: Request, res: Response) {
-	  const { pokemon , limit, page } = req.query;
+	  const validatedSearch = await validateQueryStr(req.query);
 
-	  const comments = await commentService.getComments(pokemon as string, limit as string, page as string);
+	  const searchInfo: SearchTemplate = {
+		pokemon: validatedSearch.pokemon,
+		limit: validatedSearch.limit,
+		page: validatedSearch.page
+	  };
 	  
-	res.status(200).send(comments);
+	  const comments = await commentService.getComments(searchInfo);
+	  if (comments.length == 0) {
+		res.status(404).send("No comments found");
+	  } else {	  
+		res.status(200).send(comments);
+	  }
 }
