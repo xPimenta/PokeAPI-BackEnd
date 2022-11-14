@@ -1,6 +1,5 @@
 import { prisma } from "../config/database"
 import { CommentTemplate } from "@services/commentService"
-import { conflictError } from "@utils/errorUtils"
 
 export const commentRepository = {
 	  async getAllComments(limit: number, page: number) {
