@@ -1,9 +1,10 @@
-import { errorTypeToStatusCode } from "@utils/errorUtils";
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 
-export function errorHandler( err: any, _req: Request, res: Response, _next: NextFunction ) {
-  const message =  err.message ||"Something went wrong";
-
-  const status = errorTypeToStatusCode(err.type);
-  res.status(status).json({ message });
-}
+export const errorHandler = (
+  err: any,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  res.status(err.statusCode).send(err.message);
+};

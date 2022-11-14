@@ -1,4 +1,4 @@
-import { errorTypeToStatusCode } from "./errorUtils";
+import { errorFactory } from "./errorFactory";
 
 export const validateQueryStr = async (SearchQuery: any) => {
 	  let { pokemon, limit, page } = SearchQuery;
@@ -7,11 +7,11 @@ export const validateQueryStr = async (SearchQuery: any) => {
 
   if (limit == "" || limit == undefined  || limit < 1 || limit == null || limit == "undefined") {
 	limit = "10";
-  } else if(isNaN(parseInt(limit))) { throw new Error("Invalid limit") }
+  } else if(isNaN(parseInt(limit))) { throw errorFactory("error_invalid_limit"); }
 
   if (page == "" || page == undefined || page < 1 || page == null || page == "undefined") {
 	page = "1";
-  }	else if(isNaN(parseInt(page))) { throw new Error("Invalid page") }
+  }	else if(isNaN(parseInt(page))) { throw errorFactory("error_invalid_page"); }
 
   if(pokemon == "" || pokemon == undefined) {
 	pokemon = "all"

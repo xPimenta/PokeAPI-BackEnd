@@ -4,9 +4,23 @@ import { prisma } from "src/config/database"
 
 // TEST GET COMMENTS //
 
+const getObjectFactory = () => {
+  const object = {
+    id: 1,
+    name: "Test",
+    email: "tests@gmail.com",
+    comment: "Tests",
+    pokemon: "pikachu",
+    pokeImageUrl: "Test",
+    createdAt: expect.any(String),
+  }
+  return object
+}
+
 describe("GET /comments", () => {
   beforeAll(async () => {
     await prisma.$connect()
+	await prisma.$executeRaw`TRUNCATE comments RESTART IDENTITY`
   })
   beforeEach(async () => {
     await prisma.$executeRaw`TRUNCATE comments RESTART IDENTITY`
@@ -27,54 +41,44 @@ describe("GET /comments", () => {
       const asseart = 200
 
       expect(sut.status).toBe(asseart)
-      expect(sut.body).toEqual([
-        {
-          id: 1,
-          name: "Test",
-          email: "tests@gmail.com",
-          comment: "Tests",
-          pokemon: "pikachu",
-          pokeImageUrl: "Test",
-          createdAt: expect.any(String),
-        },
-      ])
+      expect(sut.body).toEqual([getObjectFactory()])
     })
   })
 
   describe("Get pokemon comments with limit and page", () => {
     it("should get correct comments", async () => {
-      const response = await supertest(app).get(
-        "/comments?pokemon=pikachu&limit=10&page=1",
-      )
+      const sut = await supertest(app).get("/comments?pokemon=pikachu&limit=10&page=1")
+      const asseart = 200
 
-      expect(response.status).toBe(200)
+      expect(sut.status).toBe(asseart)
+      expect(sut.body).toEqual([getObjectFactory()])
     })
   })
 
   describe("Get pokemon comments with limit", () => {
     it("should get correct comments", async () => {
-      const response = await supertest(app).get(
-        "/comments?pokemon=pikachu&limit=10",
-      )
+      const sut = await supertest(app).get("/comments?pokemon=pikachu&limit=10")
+      const asseart = 200
 
-      expect(response.status).toBe(200)
+      expect(sut.status).toBe(asseart)
+      expect(sut.body).toEqual([getObjectFactory()])
     })
   })
 
   describe("Get pokemon comments with page", () => {
     it("should get correct comments", async () => {
-      const response = await supertest(app).get(
-        "/comments?pokemon=pikachu&page=1",
-      )
+      const sut = await supertest(app).get("/comments?pokemon=pikachu&page=1")
+      const asseart = 200
 
-      expect(response.status).toBe(200)
+      expect(sut.status).toBe(asseart)
+      expect(sut.body).toEqual([getObjectFactory()])
     })
   })
 
   describe("Get pokemon with NaN limit", () => {
     it("should return 400", async () => {
       const response = await supertest(app).get(
-        "/comments?pokemon=pikachu&limit=test#&page=1",
+        "/comments?pokemon=pikachu&limit=test&page=1",
       )
 
       expect(response.status).toBe(400)
@@ -156,9 +160,24 @@ const commentValues = {
   pokemon: "pikachu",
 }
 
+const postObjectFactory = () => {
+  const object = {
+    id: 1,
+    name: "test",
+    email: "teste@gmail.com",
+    comment: "test",
+    pokemon: "pikachu",
+    pokeImageUrl:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+    createdAt: expect.any(Date),
+  }
+  return object
+}
+
 describe("ALL POST TESTS", () => {
   beforeAll(async () => {
     await prisma.$connect()
+	await prisma.$executeRaw`TRUNCATE comments RESTART IDENTITY`
   })
   beforeEach(async () => {
     await prisma.$executeRaw`TRUNCATE comments RESTART IDENTITY`
@@ -173,18 +192,7 @@ describe("ALL POST TESTS", () => {
       expect(response.status).toBe(201)
 
       const result = await prisma.comments.findMany()
-      expect(result).toEqual([
-        {
-          id: 1,
-          name: "test",
-          email: "teste@gmail.com",
-          comment: "test",
-          pokemon: "pikachu",
-          pokeImageUrl:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-          createdAt: expect.any(Date),
-        },
-      ])
+      expect(result).toEqual([postObjectFactory()])
     })
   })
 
@@ -242,7 +250,7 @@ describe("ALL POST TESTS", () => {
     it("should return 400", async () => {
       const response = await supertest(app)
         .post("/postComment")
-        .send({ ...commentValues, pokemon: "test" })
+        .send({ ...commentValues, pokemon: "testss" })
 
       expect(response.status).toBe(400)
     })
