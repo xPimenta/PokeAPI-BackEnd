@@ -1,7 +1,6 @@
 import { getPokemonImg } from "@utils/pokeAPI"
 import { commentRepository } from "@repositories/commentRepository"
 import { comments } from "@prisma/client"
-import { errorFactory } from "@utils/errorFactory"
 
 export type OmitComments = Omit<comments, "id" | "createdAt">
 export type CommentTemplate = OmitComments & {

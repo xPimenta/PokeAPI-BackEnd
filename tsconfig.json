@@ -1,16 +1,12 @@
 {
   "compilerOptions": {
-	"types": ["vitest/globals"],
-    "target": "ES2017" ,
-    "lib": [
-      "ES6"
-    ] ,
-
-
-    "module": "commonjs" ,
-    "rootDir": "./" ,
-    "moduleResolution": "node" ,
-    "baseUrl": "./" ,
+    "types": ["vitest/globals"],
+    "target": "ES2017",
+    "lib": ["ES6"],
+    "module": "commonjs",
+    "rootDir": "./",
+    "moduleResolution": "node",
+    "baseUrl": "./",
     "paths": {
       "@config/*": ["./src/config/*"],
       "@controllers/*": ["./src/controllers/*"],
@@ -21,18 +17,15 @@
       "@schemas/*": ["./src/schemas/*"],
       "@services/*": ["./src/services/*"],
       "@utils/*": ["./src/utils/*"]
-    } ,
-    "resolveJsonModule": true ,
+    },
+    "resolveJsonModule": true,
 
+    "allowJs": true,
 
-    "allowJs": true ,
-
-  
     "outDir": "./dist",
-    "removeComments": true ,
+    "removeComments": true,
 
- 
-    "esModuleInterop": true ,
-    "forceConsistentCasingInFileNames": true 
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   }
 }

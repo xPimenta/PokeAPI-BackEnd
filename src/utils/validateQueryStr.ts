@@ -1,4 +1,4 @@
-import { errorFactory } from "./errorFactory";
+import { errorFactory } from "@utils/errorFactory";
 
 export const validateQueryStr = async (SearchQuery: any) => {
 	  let { pokemon, limit, page } = SearchQuery;

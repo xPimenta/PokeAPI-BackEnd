@@ -1,5 +1,5 @@
 import axios from "axios"
-import { errorFactory } from "./errorFactory"
+import { errorFactory } from "@utils/errorFactory"
 
 export const getPokemonImg = async (pokeName: string) => {
 	try {
