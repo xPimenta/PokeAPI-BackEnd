@@ -1,5 +1,5 @@
-import { prisma } from "../config/database"
-import { CommentTemplate } from "@services/commentService"
+import { prisma } from "../config/database.js"
+import { CommentTemplate } from "../services/commentService.js"
 
 export const commentRepository = {
 	  async getAllComments(limit: number, page: number) {

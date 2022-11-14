@@ -1,21 +1,16 @@
 {
   "name": "pokeapi-backend",
-  "version": "1.0.0",
-  "engines": {
-    "node": "16.14.0"
-  },
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
-  "type": "commonjs",
   "scripts": {
     "build": "babel src --extensions '.js,.ts' --out-dir build --no-copy-ignored",
     "dev": "ts-node-dev -r tsconfig-paths/register --clear --respawn --rs --transpile-only --ignore-watch node_modules --watch package.json src/server.ts",
-    "start": "node dist/src/server.js",
+    "start": "node build/server.js",
     "pretest": "npm run prisma:push:test",
-    "pretest:coverage": "npm run prisma:push:test",
     "test": "dotenv -e .env.test vitest",
-    "studio": "dotenv -e .env.test prisma studio",
     "prisma:push:test": "dotenv -e .env.test prisma migrate reset",
+	"pretest:coverage": "npm run prisma:push:test",
     "test:coverage": "dotenv -e .env.test -- vitest --coverage"
   },
   "keywords": [],
@@ -64,13 +59,5 @@
     "tslint": "^6.1.3",
     "typescript": "^4.7.4",
     "vitest": "^0.25.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xPimenta/22-MangaReader-back.git"
-  },
-  "bugs": {
-    "url": "https://github.com/xPimenta/22-MangaReader-back/issues"
-  },
-  "homepage": "https://github.com/xPimenta/22-MangaReader-back#readme"
+  }
 }

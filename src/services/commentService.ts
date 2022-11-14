@@ -1,5 +1,5 @@
-import { getPokemonImg } from "@utils/pokeAPI"
-import { commentRepository } from "@repositories/commentRepository"
+import { getPokemonImg } from "../utils/pokeAPI.js"
+import { commentRepository } from "../repositories/commentRepository.js"
 import { comments } from "@prisma/client"
 
 export type OmitComments = Omit<comments, "id" | "createdAt">

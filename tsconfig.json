@@ -1,31 +1,30 @@
 {
   "compilerOptions": {
-    "types": ["vitest/globals"],
-    "target": "ES2017",
-    "lib": ["ES6"],
-    "module": "commonjs",
-    "rootDir": "./",
-    "moduleResolution": "node",
-    "baseUrl": "./",
-    "paths": {
-      "@config/*": ["./src/config/*"],
-      "@controllers/*": ["./src/controllers/*"],
-      "@factories/*": ["./src/factories/*"],
-      "@middlewares/*": ["./src/middlewares/*"],
-      "@repositories/*": ["./src/repositories/*"],
-      "@routers/*": ["./src/routers/*"],
-      "@schemas/*": ["./src/schemas/*"],
-      "@services/*": ["./src/services/*"],
-      "@utils/*": ["./src/utils/*"]
-    },
-    "resolveJsonModule": true,
-
-    "allowJs": true,
-
-    "outDir": "./dist",
-    "removeComments": true,
-
+    //"types": ["vitest/globals"],
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "./build",
+    "target": "ES2017",
+    "baseUrl": "./src/",
+    "paths": {
+      "@/*": ["*"],
+      "@schemas/*": ["schemas/*"],
+      "@db/*": ["db/*"],
+      "@routes/*": ["routes/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@controllers/*": ["controllers/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@repositories": ["repositories/*"]
+    }
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "include": [
+    "src/**/*",
+    "tests/**/*"
+  ]
 }

@@ -1,6 +1,6 @@
 import Joi from "joi";
 import { Request, Response, NextFunction } from "express";
-import { errorFactory } from "@utils/errorFactory";
+import { errorFactory } from "../utils/errorFactory.js";
 
 export function validateSchema(schema: Joi.ObjectSchema) {
   return async (req: Request, _res: Response, next: NextFunction) => {

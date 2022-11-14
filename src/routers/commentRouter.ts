@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { validateSchema } from "../middlewares/validateSchema";
-import * as controller from "../controllers/commentController";
-import * as schema from "../schemas/commentSchemas";
+import { validateSchema } from "../middlewares/validateSchema.js";
+import * as controller from "../controllers/commentController.js";
+import * as schema from "../schemas/commentSchemas.js";
 
 const commentRouter = Router();
 
