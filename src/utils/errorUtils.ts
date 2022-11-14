@@ -3,9 +3,9 @@ export interface AppError {
   message: string
 }
 
-//export function isAppError(error: AppError) {
-//  return error.type !== undefined
-//}
+export function isAppError(error: AppError) {
+  return error.type !== undefined
+}
 
 export function errorTypeToStatusCode(errorType: string) {
   const types = {
@@ -17,15 +17,15 @@ export function errorTypeToStatusCode(errorType: string) {
   return types[errorType] || 400
 }
 
-//export function notFoundError(message?: string) {
-//  return { type: "notFound", message }
-//}
-//export function unauthorizedError(message?: string) {
-//  return { type: "unauthorized", message }
-//}
-//export function conflictError(message?: string) {
-//  return { type: "conflict", message }
-//}
-//export function wrongSchemaError(message?: string) {
-//  return { type: "wrongSchema", message }
-//}
+export function notFoundError(message?: string) {
+  return { type: "notFound", message }
+}
+export function unauthorizedError(message?: string) {
+  return { type: "unauthorized", message }
+}
+export function conflictError(message?: string) {
+  return { type: "conflict", message }
+}
+export function wrongSchemaError(message?: string) {
+  return { type: "wrongSchema", message }
+}

@@ -11,7 +11,12 @@
     "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./ -o ./dist",
     "dev": "ts-node-dev -r tsconfig-paths/register --clear --respawn --rs --transpile-only --ignore-watch node_modules --watch package.json src/server.ts",
     "start": "node dist/src/server.js",
-    "test": "vitest --coverage"
+	"pretest": "npm run prisma:push:test",
+	"pretest:coverage": "npm run prisma:push:test",
+	"test": "dotenv -e .env.test vitest",
+	"studio": "dotenv -e .env.test prisma studio",
+	"prisma:push:test": "dotenv -e .env.test prisma migrate dev",
+    "test:coverage": "dotenv -e .env.test -- vitest --coverage"
   },
   "keywords": [],
   "author": "",
