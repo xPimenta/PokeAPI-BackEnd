@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "build": "babel src --extensions '.js,.ts' --out-dir build --no-copy-ignored",
     "dev": "ts-node-dev -r tsconfig-paths/register --clear --respawn --rs --transpile-only --ignore-watch node_modules --watch package.json src/server.ts",

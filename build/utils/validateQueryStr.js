@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.validateQueryStr = void 0;
-var _errorFactory = require("../utils/errorFactory.js");
+var _errorFactory = require("../utils/errorFactory");
 const validateQueryStr = async SearchQuery => {
   let {
     pokemon,

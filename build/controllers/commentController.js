@@ -5,8 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getComments = getComments;
 exports.postComment = postComment;
-var _commentService = require("../services/commentService.js");
-var _validateQueryStr = require("../utils/validateQueryStr.js");
+var _commentService = require("../services/commentService");
+var _validateQueryStr = require("../utils/validateQueryStr");
 async function postComment(req, res) {
   const {
     name,

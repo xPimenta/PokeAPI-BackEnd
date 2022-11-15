@@ -4,8 +4,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.commentService = void 0;
-var _pokeAPI = require("../utils/pokeAPI.js");
-var _commentRepository = require("../repositories/commentRepository.js");
+var _pokeAPI = require("../utils/pokeAPI");
+var _commentRepository = require("../repositories/commentRepository");
 const commentService = {
   async postComment(uploadInfo) {
     const pokeImageUrl = await (0, _pokeAPI.getPokemonImg)(uploadInfo.pokemon);

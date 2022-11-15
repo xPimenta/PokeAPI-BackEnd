@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.validateSchema = validateSchema;
-var _errorFactory = require("../utils/errorFactory.js");
+var _errorFactory = require("../utils/errorFactory");
 function validateSchema(schema) {
   return async (req, _res, next) => {
     const validation = schema.validate(req.body, {

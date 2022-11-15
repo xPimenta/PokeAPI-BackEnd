@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getPokemonImg = void 0;
 var _axios = _interopRequireDefault(require("axios"));
-var _errorFactory = require("../utils/errorFactory.js");
+var _errorFactory = require("../utils/errorFactory");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 const getPokemonImg = async pokeName => {
   try {

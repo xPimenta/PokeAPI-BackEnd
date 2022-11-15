@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { commentService, CommentTemplate, SearchTemplate } from "../services/commentService.js";
-import { validateQueryStr } from "../utils/validateQueryStr.js";
+import { commentService, CommentTemplate, SearchTemplate } from "../services/commentService";
+import { validateQueryStr } from "../utils/validateQueryStr";
 
 export async function postComment(req: Request, res: Response) {
 	  const { name, email, comment, pokemon } = req.body;

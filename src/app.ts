@@ -1,12 +1,12 @@
 import cors from "cors"
-//import dotenv from "dotenv"
+import dotenv from "dotenv"
 import express, { Request, Response } from "express"
 import "express-async-errors"
 
 import commentRouter from "./routers/commentRouter"
 import { errorHandler } from "./middlewares/errorHandler"
 
-//dotenv.config()
+dotenv.config()
 const app = express()
 app.use(express.static('public'));
 app.use(express.json({ limit: '50mb' }));

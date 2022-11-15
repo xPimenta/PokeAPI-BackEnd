@@ -5,14 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _cors = _interopRequireDefault(require("cors"));
+var _dotenv = _interopRequireDefault(require("dotenv"));
 var _express = _interopRequireDefault(require("express"));
 require("express-async-errors");
 var _commentRouter = _interopRequireDefault(require("./routers/commentRouter"));
 var _errorHandler = require("./middlewares/errorHandler");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//import dotenv from "dotenv"
-
-//dotenv.config()
+_dotenv.default.config();
 const app = (0, _express.default)();
 app.use(_express.default.static('public'));
 app.use(_express.default.json({

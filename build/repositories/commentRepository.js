@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.commentRepository = void 0;
-var _database = require("../config/database.js");
+var _database = require("../config/database");
 const commentRepository = {
   async getAllComments(limit, page) {
     const comments = await _database.prisma.comments.findMany({
