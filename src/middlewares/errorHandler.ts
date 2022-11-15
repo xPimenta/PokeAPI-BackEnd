@@ -6,5 +6,5 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  res.status(err.statusCode).send(err.message);
+  res.status(err.statusCode || 404).send(err.message || "Not found");
 };
