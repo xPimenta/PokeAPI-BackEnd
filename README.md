@@ -186,12 +186,14 @@ In this section, you will find the example API's endpoints and their respective 
 
 ##### Query String
 
-```json
-/comments?
-/comments?pokemon=YOUR_POKEMON_NAME
-/comments?limit=10&page=1
-/comments?pokemon=YOUR_POKEMON_NAME&limit=10&page=1
-```
+_`/comments?`_
+
+_`/comments?pokemon=YOUR_POKEMON_NAME`_
+
+_`/comments?limit=10&page=1`_
+
+_`/comments?pokemon=YOUR_POKEMON_NAME&limit=10&page=1`_
+
 
 #### &nbsp; ☰ &nbsp; Responses
 
